@@ -1,9 +1,9 @@
-import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import React, { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
 
 const render = () => {
   ReactDOM.render(
@@ -24,5 +24,5 @@ if (process.env.NODE_ENV) {
     onSuccess: onServiceWorkerUpdate,
     onUpdate: onServiceWorkerUpdate,
   });
-serviceWorkerRegistration.register();
+}
 reportWebVitals();
