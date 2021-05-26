@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import reportWebVitals from "./service-worker/reportWebVitals";
+import reportWebVitals from "./reportWebVitals";
 
 const render = () => {
   ReactDOM.render(
