@@ -2,8 +2,15 @@ import React, { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import reportWebVitals from "./reportWebVitals";
+import * as serviceWorker from "./services-worker/serviceWorker";
+
+const config = {
+  dateTimeFormat: "DD/MM/YYYY HH:mm",
+  utcDateTimeFormat: "YYYY-MM-DD[T]HH:mm:ss",
+  recieptDateFormat: "DD-MM-YYYY/ hh:mm A",
+  swChangeDetectName: "__reload_for_sw",
+  isProduction: process.env.NODE_ENV === "production",
+};
 
 const render = () => {
   ReactDOM.render(
@@ -15,14 +22,15 @@ const render = () => {
 };
 
 render();
-const onServiceWorkerUpdate = (): void => {
+const onServiceWorkerUpdate = () => {
+  // @ts-ignore
+  window[config.swChangeDetectName] = true;
   render();
 };
 
-if (process.env.NODE_ENV) {
-  serviceWorkerRegistration.register({
-    onSuccess: onServiceWorkerUpdate,
+if (config.isProduction) {
+  serviceWorker.register({
     onUpdate: onServiceWorkerUpdate,
+    onSuccess: onServiceWorkerUpdate,
   });
 }
-reportWebVitals();
